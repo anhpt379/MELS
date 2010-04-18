@@ -1,0 +1,25 @@
+==========================
+MEL Administrator Document
+==========================
+
+
+Quản lý nội dung bài giảng
+==========================
+    * Nội dung chương trình và các bài giảng được tổ chức theo dạng cây thư mục
+    (Có thể xem ví dụ tại thư mục files/data)
+        data
+        |_en
+            |_level
+                |_lesson
+                    |_audio_files.amr
+                    |_audio_files.inf
+                
+    * Mỗi một file audio amr có 1 file cùng tên .inf kèm theo. 
+      Nội dung file inf gồm 2 biến là title và description viết theo kiểu python
+     
+    * Ở lần chạy đầu tiên, controller sẽ đọc cấu trúc cây thư mục và lưu vào bộ
+    nhớ đệm.
+        Nếu có bất kỳ thay đổi nào về sắp xếp cây thư mục, bạn cần gọi hàm 
+    refresh trong class Course (api/course.py)    
+    
+                 

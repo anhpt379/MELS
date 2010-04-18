@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hướng dẫn cài đặt trên Server CentOS 5.4 32bit &mdash; EnglishMobileLearning v0.9.1 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '0.9.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="EnglishMobileLearning v0.9.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="index.html">EnglishMobileLearning v0.9.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="huong-dan-cai-dat-tren-server-centos-5-4-32bit">
+<h1>Hướng dẫn cài đặt trên Server CentOS 5.4 32bit<a class="headerlink" href="#huong-dan-cai-dat-tren-server-centos-5-4-32bit" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cai-dat-server">
+<h2>Cài đặt server<a class="headerlink" href="#cai-dat-server" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<ul>
+<li><dl class="first docutils">
+<dt>Chuyển boot level về 3</dt>
+<dd><ol class="first last arabic simple">
+<li>Sửa cấu hình khởi động ở file <tt class="docutils literal"><span class="pre">inittab</span></tt>: <tt class="docutils literal"><span class="pre">vim</span> <span class="pre">/etc/inittab</span></tt></li>
+<li>Chuyển  <tt class="docutils literal"><span class="pre">id:5:initdefault:</span></tt> thành <tt class="docutils literal"><span class="pre">id:3:initdefault:</span></tt></li>
+<li>Khởi động lại server: <tt class="docutils literal"><span class="pre">reboot</span></tt></li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Hạn chế các dịch vụ thừa khởi chạy cùng hệ thống</dt>
+<dd><dl class="first last docutils">
+<dt>Gõ <tt class="docutils literal"><span class="pre">setup</span></tt>, vào <tt class="docutils literal"><span class="pre">System</span> <span class="pre">Services</span></tt></dt>
+<dd><dl class="first last docutils">
+<dt>Chỉ kích hoạt các dịch vụ sau:</dt>
+<dd><ul class="first last simple">
+<li>auditd</li>
+<li>crond</li>
+<li>iptables</li>
+<li>kudzu</li>
+<li>network</li>
+<li>restorecond</li>
+<li>sshd</li>
+<li>syslog</li>
+<li>microcode_ctl (not AMD machines only)</li>
+<li>irqbalance (if multiple cores, multiple processors, hyperthreading</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><p class="first">Kích hoạt <tt class="docutils literal"><span class="pre">Firewall</span> <span class="pre">configuration</span></tt> &gt; <tt class="docutils literal"><span class="pre">Customize</span></tt> và mở 2 cổng HTTP và SSH</p>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="cau-hinh-dang-nhap">
+<h2>Cấu hình đăng nhập<a class="headerlink" href="#cau-hinh-dang-nhap" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<ul>
+<li><p class="first">sao chép file id_rsa.pub từ máy điều khiển vào thư mục /root/.ssh/ trên server sử dụng rsync:</p>
+<div class="highlight-python"><pre>rsync -v -e ssh /home/AloneRoad/.ssh/id_rsa.pub root@203.128.246.61:~/.ssh/</pre>
+</div>
+</li>
+<li><p class="first">đăng nhập server và thực hiện lệnh sau:</p>
+<div class="highlight-python"><pre>cd /root/.ssh/
+cat id_rsa.pub &gt;&gt; authorized_keys</pre>
+</div>
+</li>
+<li><p class="first">sau khi thực hiện xong bạn có thể vô hiệu hóa hình thức đăng nhập server bằng mật khẩu để tăng tính bảo mật</p>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="cai-dat-python-2-6-x">
+<h2>Cài đặt Python 2.6.x<a class="headerlink" href="#cai-dat-python-2-6-x" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<ul>
+<li><p class="first">Chuẩn bị:</p>
+<div class="highlight-python"><pre>rpm -ivh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-3.noarch.rpm
+yum groupinstall -y 'Development Tools'</pre>
+</div>
+</li>
+<li><p class="first">Tải mã nguồn mới nhất từ trang chủ về, giải nén và cài đặt:</p>
+<div class="highlight-python"><pre>wget http://python.org/ftp/python/2.6.5/Python-2.6.5.tgz
+tar zxvf Python-2.6.5.tgz
+cd Python-2.6.5
+./configure
+make
+make install</pre>
+</div>
+</li>
+</ul>
+</blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">Hướng dẫn cài đặt trên Server CentOS 5.4 32bit</a><ul>
+<li><a class="reference external" href="#cai-dat-server">Cài đặt server</a></li>
+<li><a class="reference external" href="#cau-hinh-dang-nhap">Cấu hình đăng nhập</a></li>
+<li><a class="reference external" href="#cai-dat-python-2-6-x">Cài đặt Python 2.6.x</a></li>
+</ul>
+</li>
+</ul>
+
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/setup.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="index.html">EnglishMobileLearning v0.9.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, AloneRoad.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.5.
+    </div>
+  </body>
+</html>

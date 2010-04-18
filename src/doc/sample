@@ -1,0 +1,734 @@
+==========
+Giới thiệu
+==========
+
+    Copyright 2010 SMAT.,JSC. All rights reserved.
+
+    :Mô tả: AoiRadio API - AoiRadio System
+    :Phiên bản: 0.9.1
+    :Người soạn: Phạm Tuấn Anh
+
+
+.. contents:: **Nội dung tài liệu**
+    :depth: 2
+    :backlinks: top
+
+
+
+Welcome
+-------
+
+Về sản phẩm
+-----------
+
+Intro
+^^^^^
+    AoiRadio là kênh phát thanh cá nhân dành cho riêng bạn, chỉ phát âm nhạc mà bạn yêu thích. Đơn giản chỉ cần nhập vào một trong các bài hát hoặc nghệ sĩ yêu thích của bạn và AoiRadio sẽ tạo ra một đài phát thanh. Việc còn lại của bạn chỉ là khám phá ra các ca khúc mới. Với phiên bản trên điện thoại, AoiRadio giúp bạn nghe nhạc bất cứ khi nào bạn muốn.
+ 
+AoiRadio phát tất cả các bạn đã và đang yêu thích, đồng thời giới thiệu cho bạn về những bài hát mới mà bạn sẽ thích. Đánh giá bài hát sẽ giúp cho AoiRadio điều chỉnh các kênh trong tương lại
+ 
+Hãy chuẩn bị rơi vào tình yêu âm nhạc thêm một lần nữa.
+
+
+    À ơi Radio là một hệ thống nghe nhạc theo kênh và gợi ý nhạc mới. 
+    Tại đây bạn có thể tự tổ chức ra cho mình một thư viện nhạc của riêng mình, 
+quản lý chúng, và nghe, tất nhiên, theo một kênh liên tục. Qua quá trình bạn
+tương tác với thư viện nhạc của chính mình, chúng tôi có thể đưa ra cho bạn 
+những gợi ý bổ ích về những bài hát mới, ca sĩ mới. Ngoài ra, bạn cũng có thể
+nhận và gửi tặng các quà tặng dạng tin nhắn kèm bài hát ngay trong chính ứng 
+dụng này. ;-)
+    À ơi Radio có 3 phiên bản:
+    
+    * Phiên bản chạy trên điện thoại di động
+    * Phiên bản chạy trên web
+    * Phiên bản chạy trên desktop
+
+
+Abtract
+^^^^^^^
+    * Nghe nhạc theo kênh
+    * Music Recommender System
+    * Gửi và nhận tin nhắn kèm bài hát
+    * Quản lý thư viện nhạc
+
+
+Contact
+^^^^^^^
+    * AloneRoad@Gmail.com
+    
+
+Design
+^^^^^^
+    * API Design by AloneRoad
+
+
+What's new?
+-----------
+    * thống nhất về sử dụng chữ thường có gạch dưới
+    * sử dụng 2 thuộc tính: ``status_code`` và ``description`` trong mọi câu trả lời
+
+
+Change log
+----------
+    * bỏ status_code 102 và 103
+    * thêm và quy định cụ thể hơn các status_code
+    
+    
+========
+Nội dung
+========
+
+
+    * À ơi Radio API có thể truy cập tại địa chỉ: http://api.aoi.vn/
+    * Định dạng trả về: `XML <http://en.wikipedia.org/wiki/XML>`_
+
+
+
+Status Codes
+------------
+
+    **Thông tin**:
+
+        * ``200 OK``: Thao tác thực hiện thành công
+        
+        * ``201 Created``: Tài khoản đã được tạo
+        
+        * ``202 Accepted``: Yêu cầu được đồng ý
+        
+        * ``204 No Content``: Không có kết quả nào
+        
+        * ``302 Found``: Dữ liệu kiểm tra có trong CSDL
+            
+        * ``304 Not Modified``: Không có dữ liệu nào mới.
+    
+        
+    **Lỗi phía Client 4xx**:
+    
+        * ``400 Bad Request``: Yêu cầu không hợp lệ. Một hoặc một vài tham số bạn dùng chưa đúng. Thuộc tính `description` trong nội dung trả về sẽ mô tả chi tiết hơn về lỗi này
+            
+        * ``401 Unauthorized``: Thiếu mã xác thực hoặc mã xác thực không đúng
+            
+        * ``402 Payment Required``: Vui lòng nâng cấp tài khoản để sử dụng chức năng này
+        
+        * ``403 Forbidden``: Yêu cầu đúng, nhưng bị từ chối. Thuộc tính `description` trong nội dung trả về sẽ mô tả chi tiết hơn. Thông thường mã lỗi này xuất hiện là do số yêu cầu vượt quá giới hạn cho phép 
+        
+        * ``404 Not Found``: Yêu cầu này không tồn tại.
+                
+        * ``405 Method Not Allowed``: Phương thức này không được cho phép với mã API này  
+            
+        * ``406 Not Acceptable``: Giá trị của một tham số không hợp lệ.
+        
+        * ``409 Conflict``: File upload trùng với một file đã có trên hệ thống
+    
+
+    **Lỗi phía Server 5xx**:
+    
+        * ``500 Internal Server Error``: Một số thứ đã hoạt động không đúng. Vui lòng báo lại cho nhóm phát triển AoiRadio API để xử lý vấn đề này.  
+        
+        * ``502 Bad Gateway``: AoiRadioAPI bị sụp hoặc đang được nâng cấp
+        
+        * ``503 Service Unavailable``: Server đang hoạt động nhưng quá tải. Vui lòng thử lại sau. 
+            
+        
+    
+API Key
+-------
+
+    * Đăng ký một API key
+        - Hoàn thiện form đăng ký với đầy đủ các thông tin
+        - Gửi về contact@aoi.vn
+        - Chờ hồi âm
+    * Cấu hình tài khoản của bạn
+        - Tổng số lượt yêu cầu/ngày:
+        - Khoảng cách giữa 2 lần yêu cầu (ms):
+    * API mặc định dành cho các phiên bản của hệ thống:
+        - Silverlight 3:
+        - PHP:
+        - J2ME:
+
+
+
+Xác thực
+--------
+
+Đăng nhập
+^^^^^^^^^
+        * **Mẫu yêu cầu**:
+            .. code-block:: guess
+            
+                login:username="foo"
+                     &password="bar"
+                     &api_key="foobar"
+                    
+        * **Các tham số:**
+            - ``username``: tên đăng nhập
+            - ``password``: mật khẩu
+            - ``api_key``: từ khoá được cung cấp bởi AoiRadio 
+            
+            .. seealso::
+                `API key <#api-key>`_
+                
+            .. note::
+                Tên đăng nhập và mật khẩu phải được băm md5 trước khi đưa vào mẫu yêu cầu
+        
+        * **Xác thực**
+            - (không yêu cầu đăng nhập)
+        
+        * **Phương thức**: ``HTTP GET``
+        
+        * **Trả lời**:
+            .. code-block:: xml
+            
+                <login status_code="200" description="Đăng nhập thành công" display_name="foo" session_id="bar" last_ip="foobaz" last_visited="foobaz"/>
+        
+        * **Lỗi và biệt lệ**
+            - Mẫu lỗi:
+                .. code-block:: xml
+            
+                    <error status_code="400" description="Yêu cầu không hợp lệ"/>
+                       
+                       
+            - Các mã lỗi:
+            
+                ``+ 400 Bad request``
+                
+                ``+ 403 Forbidden``
+                
+                ``+ 405 Method Not Allow``
+                
+                ``+ 406 Not Acceptable``
+                
+                ``+ 500 Internal Server Error``
+                
+                ``+ 502 Bad Gateway``
+                
+                ``+ 503 Service Unavailable``
+                
+                .. seealso::
+                    `Status Codes <#status-codes>`_
+                
+            - Nội dung cụ thể của từng lỗi sẽ có trong thuộc tính description trả về
+
+
+Đăng xuất
+^^^^^^^^^
+    * **Mẫu yêu cầu**: 
+        .. code-block:: guess
+    
+            logout:session_id="foobaz"
+    
+    * **Các tham số**:
+        - ``session_id``: lấy từ lúc đăng nhập thành công hoặc từ cache
+    
+    * **Xác thực**: (không yêu cầu đăng nhập)
+    
+    * **Phương thức**: ``HTTP GET``
+    * **Mẫu trả lời**:
+        .. code-block:: xml
+    
+            <logout status_code="200" description="Đăng xuất thành công"/>
+        
+    * **Lỗi và biệt lệ**:
+        - Mẫu lỗi:
+            .. code-block:: xml
+        
+                <error status_code="401" description="session_id không hợp lệ"/>
+        
+        - Các mã lỗi:
+            ``+ 400 Bad request``
+            
+            ``+ 403 Forbidden``
+            
+            ``+ 405 Method Not Allow (for demo account)``
+       
+            .. seealso::
+                `Status Codes <#status-codes>`_
+       
+Đăng ký
+^^^^^^^
+    * **Mẫu yêu cầu**:
+        .. code-block:: guess
+                       
+             register:username="foo"
+                     &password="bar"
+                     &display_name="baz"
+                     &gender="foobar"
+                     &birth_year="foobaz"
+                    [&email="fubar"]
+                    [&phone_number="fubaz"]
+                     &api_key="foobazz"
+    
+    * **Các tham số**:
+        - ``username``: tên sử dụng để đăng nhập
+        
+        - ``password``: mật khẩu đăng nhập tài khoản
+        
+        - ``display_name``: tên dùng để hiển thị
+        
+        - ``gender``: giới tính (nam: ``1``   |   nữ: ``0``)
+        
+        - ``birth_year``: năm sinh (1900->năm hiện tại)
+        
+        - ``email``: địa chỉ nhận thư kích hoạt (đối với phiên bản web)
+        
+        - ``phone_number``: số điện thoại nhận mã số kích hoạt (đối với phiên bản di động)
+        
+        - ``api_key``: À ơi Radio API
+    
+    * **Xác thực** (không yêu cầu đăng nhập)
+    
+    * **Mẫu trả lời**:
+        .. code-block:: xml
+    
+            <register status_code="200" description="Đăng ký thành công"/>
+    
+    * Lỗi và biệt lệ:
+        - Mẫu lỗi:
+            .. code-block:: xml
+        
+                <error status_code="400" description="Yêu cầu không hợp lệ"/>
+        
+        - Các mã lỗi:
+            
+            ``+ 400 Bad request``
+            ``+ ...``
+            
+            .. seealso::
+                `Status Codes <#status-codes>`_
+            
+            
+
+Quên mật khẩu
+^^^^^^^^^^^^^
+    * **Mẫu yêu cầu**:
+        .. code-block:: guess
+        
+            forgot_password:verify_code="foo"
+                           &api_key="foobar"
+    
+    * **Các tham số**:
+        - ``verify_code``: email or phone_number
+        - ``api_key``: AoiRadio API key
+        
+    * **Xác thực** (không yêu cầu đăng nhập)
+    
+    * **Mẫu trả lời**:
+        .. code-block:: xml
+    
+            <forgot_password status_code="202" description="Yêu cầu đã được chấp nhận"/>
+    
+    * **Lỗi và biệt lệ**:
+        - Mẫu lỗi:
+            .. code-block:: xml
+         
+                <error status_code="401" description="email/phone_number này không tồn tại"/>
+        
+        - Các mã lỗi:
+            + 401
+            + 400
+            + 404
+            + 500   
+    
+            .. seealso::
+                `Status Codes <#status-codes>`_
+    
+    
+Kích hoạt tài khoản
+^^^^^^^^^^^^^^^^^^^
+    * **Mẫu yêu cầu**:
+        .. code-block:: guess
+        
+            active_account:active_code="foobar"
+                          &api_key="foobaz"
+                           
+    * **Các tham số**:
+        - ``active_code``: mã kích hoạt nhận được trong email hoặc tin nhắn
+        - ``api_key``: AoiRadio API key
+        
+    * **Xác thực** (không yêu cầu)
+    
+    * **Mẫu trả lời**:
+        .. code-block:: xml
+    
+            <active_account status_code="201" description="Tài khoản của bạn đã được tạo"/>
+    
+    * **Lỗi và biệt lệ**:
+        - Mẫu lỗi:
+            .. code-block:: xml
+        
+                <error status_code="401" description="mã xác thực không hợp lệ"/>
+            
+        - Các mã lỗi:
+            + 400
+            + 401
+            + 500
+
+            .. seealso::
+                `Status Codes <#status-codes>`_
+    
+    
+Kiểm tra
+^^^^^^^^
+    * **Mẫu yêu cầu**:
+        .. code-block:: guess
+            
+            check:username="foo"
+                 &api_key="bar"
+    
+    * **Các tham số**:
+        - ``username``: tên cần kiểm tra
+        - ``api_key``: AoiRadio API key
+    
+    * **Xác thực**: (không yêu cầu)
+    
+    * **Mẫu trả lời**
+        .. code-block:: xml
+        
+            <check username="foo" status_code="404" description="Tên này chưa có ai sử dụng"/>
+    
+    * **Lỗi và biệt lệ**
+        - Mẫu lỗi:
+            .. code-block:: xml
+        
+                <error username="foo" status_code="302" description="Tên này đã có người dùng"/>
+        
+        - Mã lỗi:
+            + ``400 Bad Request``
+            
+            + ``500 Internal Server Error``
+            
+            .. seealso::
+                `Status Codes <#status-codes>`_
+
+
+Tìm kiếm
+--------
+
+Tìm kiếm
+^^^^^^^^
+    **Mẫu yêu cầu**:
+        .. code-block:: guess
+                    
+            search:query="foo"
+                  &type="track"
+                  &result_per_page="fu"
+                  &page="baz"
+                 [&session_id="bar"]
+                  &api_key="foobar"
+                  
+Chọn kết quả
+^^^^^^^^^^^^
+    **Mẫu yêu cầu**::
+            
+            accept:query="foo"
+                  &result_id="bar"
+                 [&session_id="foobar"]
+                  &api_key="foobaz"
+   
+   
+Types
+^^^^^
+    * track
+    * artist
+    * album
+    * station
+    * lyric
+    * tag
+
+
+
+Gợi ý
+-----                                                               
+
+Lấy gợi ý
+^^^^^^^^^
+    **Mẫu yêu cầu**:
+        .. code-block:: guess
+            
+            suggest:keyword="foo"
+                   &type="track"
+                  [&session_id="bar"]
+                   &api_key="foobar"
+
+
+Chấp nhận gợi ý
+^^^^^^^^^^^^^^^
+    **Mẫu yêu cầu**:
+        .. code-block:: guess
+            
+            accept:keyword="foo"
+                  &suggest_id="bar"
+                 [&session_id="foobar"]
+                  &api_key="foobaz"
+            
+
+
+Tin nhắn
+--------
+
+Gửi tin nhắn
+^^^^^^^^^^^^
+   * **Mẫu yêu cầu**:
+        .. code-block:: guess
+            
+            send:to="foo"
+                &message="bar"
+                &session_id="foobar"
+                &api_key="foobaz"
+            
+                
+Đọc tin nhắn
+^^^^^^^^^^^^
+   * **Mẫu yêu cầu**:
+        .. code-block:: guess
+   
+            read:message_code="foo"
+                &api_key="bar"
+
+
+Thư viện nhạc
+-------------
+
+Mở thư viện
+^^^^^^^^^^^
+    * **Mẫu yêu cầu**:
+        .. code-block:: guess
+    
+            play:session_id="foo"
+                &tag_id="bar"
+                &api_key="foobar"
+
+Gắn tag
+^^^^^^^
+    * **Mẫu yêu cầu**:
+        .. code-block:: guess
+    
+            add_tags:string="foo, bar"
+
+
+Trình phát nhạc
+---------------
+
+Bỏ qua
+^^^^^^
+    * Cú pháp yêu cầu:
+        .. code-block:: guess
+    
+            skip:track_id="foo"
+                &session_id="bar"
+                &api_key="foobar"
+    
+    * Các tham số:
+        - ``track_id``: id của bài hát bị bỏ qua
+        - ``session_id``: mã phiên làm việc của người sử dụng
+        - ``api_key``: AoiRadio API
+    
+    * Phương thức: ``HTTP POST``
+    
+    * Trả lời (không có)
+    
+Nghe hết một bài
+^^^^^^^^^^^^^^^^
+    * Cú pháp yêu cầu:
+        .. code-block:: guess
+    
+            played:track_id="foo"
+                  &session_id="bar"
+                  &api_key="foobar"
+    
+    * Các tham số:
+        - ``track_id``: id của bài hát đã nghe xong
+        - ``session_id``: mã phiên làm việc của người sử dụng
+        - ``api_key``: AoiRadio API
+    
+    * Phương thức: ``HTTP POST``
+    
+    * Trả lời (không có)
+    
+Thích
+^^^^^
+    * Cú pháp yêu cầu:
+        .. code-block:: guess
+    
+            love:track_id="foo"
+                &session_id="bar"
+                &api_key="foobar"
+    
+    * Các tham số:
+        - ``track_id``: id của bài hát đánh dấu
+        - ``session_id``: mã phiên làm việc của người sử dụng
+        - ``api_key``: AoiRadio API
+    
+    * Phương thức: ``HTTP POST``
+    
+    * Trả lời (không có)
+
+
+Cấm
+^^^
+    * Cú pháp yêu cầu:
+        .. code-block:: guess
+    
+            ban:track_id="foo"
+               &session_id="bar"
+               &api_key="foobar"
+    
+    * Các tham số:
+        - ``track_id``: id của bài hát bị cấm
+        - ``session_id``: mã phiên làm việc của người sử dụng
+        - ``api_key``: AoiRadio API
+    
+    * Phương thức: ``HTTP POST``
+    
+    * Trả lời (không có)
+
+
+Gắn tag
+^^^^^^^
+    * Cú pháp yêu cầu:
+        .. code-block:: guess
+    
+            tag:track_id="foo"
+               &tags="foobaz"
+               &session_id="bar"
+               &api_key="foobar"
+    
+    * Các tham số:
+        - ``track_id``: id của bài hát bị bỏ qua
+        - ``tags``: chuỗi các tag phân cách bởi dấu phảy
+        - ``session_id``: mã phiên làm việc của người sử dụng
+        - ``api_key``: AoiRadio API
+    
+    * Phương thức: ``HTTP POST``
+    
+    * Trả lời (không có)
+
+
+Dừng phát một kênh
+^^^^^^^^^^^^^^^^^^
+    * Cú pháp yêu cầu:
+        .. code-block:: guess
+        
+            last_played:track_id="foo"
+                       &session_id="bar"
+                       &api_key="foobar"
+    
+    * Các tham số:
+        - ``track_id``: id của bài hát đang nghe
+        - ``session_id``: mã phiên làm việc của người sử dụng
+        - ``api_key``: AoiRadio API
+    
+    * Phương thức: ``HTTP POST``
+    
+    * Trả lời (không có)
+
+
+Kênh
+----
+
+Artist: Similar Artist Radio
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   * **Mẫu yêu cầu**:
+        .. code-block:: guess 
+   
+            play:artist_id="foo"
+                &type="similar_artist_radio"
+               [&session_id="bar"]
+                &api_key="foobar"
+                
+                
+Artist: Top-Fans Radio
+^^^^^^^^^^^^^^^^^^^^^^
+   * **Mẫu yêu cầu**:
+        .. code-block:: guess
+    
+            play:artist_id="foo"
+                &type="top-fans_radio"
+               [&session_id="bar"]
+                &api_key="foobar"
+   
+   
+User: Library Radio
+^^^^^^^^^^^^^^^^^^^
+   * **Mẫu yêu cầu**:
+        .. code-block:: guess
+            
+            play:session_id="foo"
+                &type="libary_radio"
+                &api_key="foobar"
+                
+User: Neighbours Radio
+^^^^^^^^^^^^^^^^^^^^^^
+   * **Mẫu yêu cầu**:
+        .. code-block:: guess 
+   
+            play:session_id="foo"
+                &type="neighbours_radio"
+                &api_key="foobar"
+                
+User: Loved Tracks Radio
+^^^^^^^^^^^^^^^^^^^^^^^^
+   * **Mẫu yêu cầu**:
+        .. code-block:: guess 
+   
+            play:session_id="foo"
+                &type="loved_track_radio"
+                &api_key="foobar"
+
+User: Recommendation Radio
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+   * **Mẫu yêu cầu**:
+        .. code-block:: guess
+        
+            play:session_id="foo"
+                &type="recommendation_radio"
+                &api_key="foobar"
+                
+Tag: Global Tag Radio
+^^^^^^^^^^^^^^^^^^^^^
+   * **Mẫu yêu cầu**:
+        .. code-block:: guess 
+   
+            play:tag_id="foo"
+               [&session_id="bar"]
+                &api_key="foobar"
+                    
+Tunning
+^^^^^^^
+
+
+
+Cá nhân
+-------
+
+Thay đổi thông tin cá nhân
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Khoá tài khoản
+^^^^^^^^^^^^^^
+
+Nâng cấp/hạ cấp tài khoản
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Quảng cáo
+---------
+
+Loại bỏ quảng cáo ra khỏi kênh
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Thông tin
+---------
+
+Thông tin bài hát
+^^^^^^^^^^^^^^^^^
+
+Thông tin ca sĩ
+^^^^^^^^^^^^^^^
+
+Thông tin người sử dụng
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Lịch sử nghe nhạc
+^^^^^^^^^^^^^^^^^

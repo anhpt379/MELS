@@ -1,0 +1,32 @@
+1. NginX::
+    
+    wget http://sysoev.ru/nginx/nginx-0.7.65.tar.gz
+    tar zxvf nginx-0.7.65.tar.gz
+    cd nginx-0.7.65
+    
+    Thay đổi tên server và các thông báo lỗi đặc biệt ở 2 file ``src/http/ngx_http_header_filter_module.c`` 
+    và ``src/http/ngx_http_special_response.c``
+    
+    ./configure --without-http_autoindex_module --without-http_ssi_module --without-http_userid_module --without-http_auth_basic_module --without-http_geo_module --without-http_fastcgi_module --without-http_empty_gif_module
+    make
+    make install
+    
+    Copy file ``nginx.conf`` trong thư mục cài đặt vào ``/usr/local/nginx/conf/``
+2. 
+
+
+
+################################################################################
+############## setup on VPS CentOS 5.4 #########################################
+
+cd /usr/local/src
+wget http://python.org/ftp/python/2.6.5/Python-2.6.5.tgz
+tar zxvf Python-2.6.5.tgz
+cd Python-2.6.5
+./configure
+make
+make install
+
+
+________________________________________________________________________________
+Setup pcre-devel, Thrift, pycassa

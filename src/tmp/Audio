@@ -1,0 +1,23 @@
+
+
+Audio
+    audio_id   (= md5(audio_data))
+        filename
+        title
+        description
+        tags
+        counter
+
+
+        
+Course
+    Unit1
+        audio_id
+        audio_id
+        audio_id
+        
+        
+Log
+    user_id
+        audio_id 
+        times

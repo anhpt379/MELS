@@ -1,0 +1,13 @@
+
+ADMIN
+-----
+
+    * Import Audio to Database
+    * Manager API keys
+    * Stats
+        * User
+        * Audio
+        * Current Login
+    * Start | Stop | Restart | Upgrade | Rollback Server
+    
+     

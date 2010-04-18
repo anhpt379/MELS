@@ -1,0 +1,691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>MEL’s API Document &mdash; EnglishMobileLearning v0.9.1 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '0.9.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="EnglishMobileLearning v0.9.1 documentation" href="#" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="#">EnglishMobileLearning v0.9.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="mel-s-api-document">
+<h1><a class="toc-backref" href="#noi-dung-tai-lieu">MEL&#8217;s API Document</a><a class="headerlink" href="#mel-s-api-document" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<p>Copyright 2010 VinhCom Corp,. All rights reserved.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Mô tả:</th><td class="field-body">Mobile English Learning</td>
+</tr>
+<tr class="field"><th class="field-name">Phiên bản:</th><td class="field-body">0.9.1</td>
+</tr>
+<tr class="field"><th class="field-name">Người soạn:</th><td class="field-body">Phạm Tuấn Anh</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<div class="contents topic" id="noi-dung-tai-lieu">
+<p class="topic-title first"><strong>Nội dung tài liệu</strong></p>
+<ul class="simple">
+<li><a class="reference internal" href="#mel-s-api-document" id="id3">MEL&#8217;s API Document</a><ul>
+<li><a class="reference internal" href="#what-s-new" id="id4">What&#8217;s new?</a></li>
+<li><a class="reference internal" href="#change-logs" id="id5">Change logs</a></li>
+<li><a class="reference internal" href="#tong-quan" id="id6">Tổng quan</a></li>
+<li><a class="reference internal" href="#status-codes" id="id7">Status Codes</a></li>
+<li><a class="reference internal" href="#api-key" id="id8">API Key</a></li>
+<li><a class="reference internal" href="#nhung-phan-chung" id="id9">Những phần chung</a></li>
+<li><a class="reference internal" href="#nhom-xac-thuc" id="id10">Nhóm xác thực</a></li>
+<li><a class="reference internal" href="#nhom-tu-dien" id="id11">Nhóm từ điển</a></li>
+<li><a class="reference internal" href="#nhom-bai-giang" id="id12">Nhóm bài giảng</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="what-s-new">
+<h2><a class="toc-backref" href="#noi-dung-tai-lieu">What&#8217;s new?</a><a class="headerlink" href="#what-s-new" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<ul class="simple">
+<li>Sử dụng định dạng XML cho toàn bộ dữ liệu trả về</li>
+<li>Tất cả từ khóa sử dụng tiếng Anh, chữ thường, có gạch dưới phân cách từ</li>
+<li>Thuộc tính <tt class="docutils literal"><span class="pre">status_code</span></tt> có trong mọi lời trả về</li>
+<li>Tham số <tt class="docutils literal"><span class="pre">api_key</span></tt> có trong mọi lời yêu cầu</li>
+<li>Sử dụng ký tự <tt class="docutils literal"><span class="pre">:</span></tt> để phân cách phần phương thức và các tham số
+Sử dụng ký tự <tt class="docutils literal"><span class="pre">&amp;</span></tt> để phân cách giữa các tham số
+Giá trị của các tham số được đặt trong cặp ký tự <tt class="docutils literal"><span class="pre">'</span></tt> hoặc <tt class="docutils literal"><span class="pre">&quot;</span></tt></li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="change-logs">
+<h2><a class="toc-backref" href="#noi-dung-tai-lieu">Change logs</a><a class="headerlink" href="#change-logs" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="tong-quan">
+<h2><a class="toc-backref" href="#noi-dung-tai-lieu">Tổng quan</a><a class="headerlink" href="#tong-quan" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>MEL API có thể truy cập tại địa chỉ: <a class="reference external" href="http://192.168.1.104/">http://192.168.1.104/</a></li>
+<li>Định dạng trả về: <a class="reference external" href="http://en.wikipedia.org/wiki/XML">XML</a></li>
+</ul>
+</div>
+<div class="section" id="status-codes">
+<h2><a class="toc-backref" href="#noi-dung-tai-lieu">Status Codes</a><a class="headerlink" href="#status-codes" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<p><strong>Thông tin</strong>:</p>
+<blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">200</span> <span class="pre">OK</span></tt>: Thao tác thực hiện thành công</li>
+<li><tt class="docutils literal"><span class="pre">201</span> <span class="pre">Created</span></tt>: Tài khoản đã được tạo</li>
+<li><tt class="docutils literal"><span class="pre">202</span> <span class="pre">Accepted</span></tt>: Đăng nhập thành công</li>
+<li><tt class="docutils literal"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></tt>: Không có kết quả nào</li>
+<li><tt class="docutils literal"><span class="pre">302</span> <span class="pre">Found</span></tt>: Dữ liệu kiểm tra có trong CSDL</li>
+<li><tt class="docutils literal"><span class="pre">304</span> <span class="pre">Not</span> <span class="pre">Modified</span></tt>: Không có dữ liệu nào mới.</li>
+</ul>
+</blockquote>
+<p><strong>Lỗi phía Client 4xx</strong>:</p>
+<blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">400</span> <span class="pre">Bad</span> <span class="pre">Request</span></tt>: Yêu cầu không hợp lệ</li>
+<li><tt class="docutils literal"><span class="pre">401</span> <span class="pre">Unauthorized</span></tt>: Thiếu mã xác thực hoặc mã xác thực không đúng</li>
+<li><tt class="docutils literal"><span class="pre">402</span> <span class="pre">Payment</span> <span class="pre">Required</span></tt>: Thời gian dùng thử đã hết. Vui lòng nâng cấp tài khoản để tiếp tục sử dụng.</li>
+<li><tt class="docutils literal"><span class="pre">403</span> <span class="pre">Forbidden</span></tt>: Yêu cầu đúng, nhưng bị từ chối. Thuộc tính <cite>description</cite> trong nội dung trả về sẽ mô tả chi tiết hơn. Thông thường mã lỗi này xuất hiện là do số yêu cầu vượt quá giới hạn cho phép</li>
+<li><tt class="docutils literal"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></tt>: Phương thức này không tồn tại.</li>
+<li><tt class="docutils literal"><span class="pre">405</span> <span class="pre">Method</span> <span class="pre">Not</span> <span class="pre">Allowed</span></tt>: Phương thức này không được hệ thống hỗ trợ</li>
+<li><tt class="docutils literal"><span class="pre">406</span> <span class="pre">Not</span> <span class="pre">Acceptable</span></tt>: Giá trị của một/một vài tham số không hợp lệ.</li>
+<li><tt class="docutils literal"><span class="pre">409</span> <span class="pre">Conflict</span></tt>: File upload trùng với một file đã có trên hệ thống</li>
+</ul>
+</blockquote>
+<p><strong>Lỗi phía Server 5xx</strong>:</p>
+<blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">500</span> <span class="pre">Internal</span> <span class="pre">Server</span> <span class="pre">Error</span></tt>: Hệ thống gặp phải một lỗi không rõ nguyên nhân. Vui lòng báo lại cho bộ phận quản trị để xử lý vấn đề này.</li>
+<li><tt class="docutils literal"><span class="pre">502</span> <span class="pre">Bad</span> <span class="pre">Gateway</span></tt>: Server ngừng hoạt động hoặc đang được nâng cấp</li>
+<li><tt class="docutils literal"><span class="pre">503</span> <span class="pre">Service</span> <span class="pre">Unavailable</span></tt>: Server đang hoạt động nhưng quá tải. Vui lòng thử lại sau.</li>
+</ul>
+</blockquote>
+</blockquote>
+</div>
+<div class="section" id="api-key">
+<h2><a class="toc-backref" href="#noi-dung-tai-lieu">API Key</a><a class="headerlink" href="#api-key" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<ul>
+<li><p class="first">Đăng ký một API key</p>
+</li>
+<li><dl class="first docutils">
+<dt>Cấu hình tài khoản của bạn</dt>
+<dd><ul class="first last simple">
+<li>Tổng số lượt yêu cầu/ngày:</li>
+<li>Khoảng cách giữa 2 lần yêu cầu (ms):</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>API mặc định dành cho các phiên bản di động là: <tt class="docutils literal"><span class="pre">c74df88f0b1db2e4f48fdc4903851d41</span></tt></dt>
+<dd><p class="first last">(không giới hạn tổng số lượt yêu cầu và khoảng thời gian trễ giữa 2 lần yêu cầu)</p>
+</dd>
+</dl>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="nhung-phan-chung">
+<h2><a class="toc-backref" href="#noi-dung-tai-lieu">Những phần chung</a><a class="headerlink" href="#nhung-phan-chung" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dinh-dang-tra-ve">
+<h3>Định dạng trả về<a class="headerlink" href="#dinh-dang-tra-ve" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;api</span> <span class="na">version=</span><span class="s">&quot;0.9.1&quot;</span> <span class="na">last_update=</span><span class="s">&quot;06-04-2010&quot;</span><span class="nt">&gt;</span>Nội dung trả về<span class="nt">&lt;/api&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Giá trị của thuộc tính <tt class="docutils literal"><span class="pre">version</span></tt> và <tt class="docutils literal"><span class="pre">last_update</span></tt> có thể sẽ khác ở trên</li>
+<li><tt class="docutils literal"><span class="pre">Nội</span> <span class="pre">dung</span> <span class="pre">trả</span> <span class="pre">về</span></tt> sẽ thay đổi tùy từng trường hợp cụ thể</li>
+</ul>
+</div>
+<p>Ví dụ:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;api</span> <span class="na">version=</span><span class="s">&quot;0.9.1&quot;</span> <span class="na">last_update=</span><span class="s">&quot;06-04-2010&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;400&quot;</span> <span class="na">description=</span><span class="s">&quot;Yêu cầu không hợp lệ&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/api&gt;</span>
+</pre></div>
+</div>
+</blockquote>
+</div>
+<div class="section" id="thong-bao-loi">
+<h3>Thông báo lỗi<a class="headerlink" href="#thong-bao-loi" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<p>Những thông báo dưới đây có thể gặp trong bất cứ yêu cầu nào được hệ thống hỗ trợ. Các lỗi này sẽ không đề cập đến trong những phần sau nhưng được coi như sẽ xuất hiện trong mọi trường hợp.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;400&quot;</span> <span class="na">description=</span><span class="s">&quot;Yêu cầu không hợp lệ&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;401&quot;</span> <span class="na">description=</span><span class="s">&quot;api_key không hợp lệ&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;403&quot;</span> <span class="na">description=</span><span class="s">&quot;api_key này chỉ được phép sử dụng %s lần một ngày&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;403&quot;</span> <span class="na">description=</span><span class="s">&quot;Khoảng thời gian tối thiểu giữa 2 lần request phải lớn hơn %s mili-giây&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;405&quot;</span> <span class="na">description=</span><span class="s">&quot;Phương thức này không được hệ thống hỗ trợ&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;500&quot;</span> <span class="na">description=</span><span class="s">&quot;Hệ thống gặp một lỗi chưa rõ nguyên nhân. Vui lòng báo lại cho bộ phận quản trị nếu gặp thông báo này&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</blockquote>
+</div>
+</div>
+<div class="section" id="nhom-xac-thuc">
+<h2><a class="toc-backref" href="#noi-dung-tai-lieu">Nhóm xác thực</a><a class="headerlink" href="#nhom-xac-thuc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dang-ky">
+<h3>Đăng ký<a class="headerlink" href="#dang-ky" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Mẫu yêu cầu</strong>:</dt>
+<dd><div class="first last highlight-sql"><div class="highlight"><pre><span class="n">register</span><span class="p">:</span><span class="n">username</span><span class="o">=</span><span class="ss">&quot;foo&quot;</span><span class="o">&amp;</span><span class="n">password</span><span class="o">=</span><span class="ss">&quot;bar&quot;</span><span class="o">&amp;</span><span class="n">phone_number</span><span class="o">=</span><span class="ss">&quot;foobar&quot;</span><span class="o">&amp;</span><span class="n">api_key</span><span class="o">=</span><span class="ss">&quot;fubar&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Các tham số</strong>:</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">username</span></tt>: tên đăng nhập</li>
+<li><tt class="docutils literal"><span class="pre">password</span></tt>: mật khẩu đăng nhập (phía client phải mã hóa md5 trước khi gửi lên</li>
+<li><tt class="docutils literal"><span class="pre">phone_number</span></tt>: số điện thoại đang dùng</li>
+<li><tt class="docutils literal"><span class="pre">api_key</span></tt>: api_key được server cung cấp</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>Xác thực</strong>: không yêu cầu</p>
+</li>
+<li><p class="first"><strong>Phương thức</strong>: <tt class="docutils literal"><span class="pre">HTTP</span> <span class="pre">GET</span></tt></p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Trả lời</strong>:</dt>
+<dd><div class="first last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;register</span> <span class="na">status_code=</span><span class="s">&quot;201&quot;</span> <span class="na">description=</span><span class="s">&quot;Đăng ký thành công&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Các trường hợp lỗi</strong>:</dt>
+<dd><div class="first highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;406&quot;</span> <span class="na">description=</span><span class="s">&quot;Tham số không hợp lệ&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;406&quot;</span> <span class="na">description=</span><span class="s">&quot;Tên đăng nhập chỉ được dùng các ký tự a-z, A-Z và .-_@&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;406&quot;</span> <span class="na">description=</span><span class="s">&quot;Mật khẩu phải được mã hóa md5 trước khi gửi lên&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;406&quot;</span> <span class="na">description=</span><span class="s">&quot;phone_number không hợp lệ&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="admonition-see-also last admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="#cac-thong-bao-loi-chung">Các thông báo lỗi chung</a></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="dang-nhap">
+<h3>Đăng nhập<a class="headerlink" href="#dang-nhap" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Mẫu yêu cầu</strong>:</dt>
+<dd><div class="first last highlight-sql"><div class="highlight"><pre><span class="n">login</span><span class="p">:</span><span class="n">username</span><span class="o">=</span><span class="ss">&quot;foo&quot;</span><span class="o">&amp;</span><span class="n">password</span><span class="o">=</span><span class="ss">&quot;bar&quot;</span><span class="o">&amp;</span><span class="n">api_key</span><span class="o">=</span><span class="ss">&quot;foobar&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Các tham số</strong>:</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">username</span></tt>: tên đăng nhập</li>
+<li><tt class="docutils literal"><span class="pre">password</span></tt>: mật khẩu đăng nhập (phía client phải mã hóa md5 trước khi gửi lên</li>
+<li><tt class="docutils literal"><span class="pre">api_key</span></tt>: api_key được server cung cấp</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>Xác thực</strong>: không yêu cầu</p>
+</li>
+<li><p class="first"><strong>Phương thức</strong>: <tt class="docutils literal"><span class="pre">HTTP</span> <span class="pre">GET</span></tt></p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Trả lời</strong>:</dt>
+<dd><div class="first highlight-xml"><div class="highlight"><pre><span class="nt">&lt;login</span> <span class="na">session_id=</span><span class="s">&quot;foobar&quot;</span> <span class="na">status_code=</span><span class="s">&quot;202&quot;</span> <span class="na">description=</span><span class="s">&quot;Đăng nhập thành công&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><tt class="docutils literal"><span class="pre">session_id</span></tt> là một chuỗi gồm 32 ký tự và thay đổi mỗi lần đăng nhập</p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Các trường hợp lỗi</strong>:</dt>
+<dd><div class="first highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;401&quot;</span> <span class="na">description=</span><span class="s">&quot;Tên đăng nhập/mật khẩu không hợp lệ&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;402&quot;</span> <span class="na">description=</span><span class="s">&quot;Thời gian dùng thử đã hết&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="admonition-see-also last admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="#cac-thong-bao-loi-chung">Các thông báo lỗi chung</a></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="dang-xuat">
+<h3>Đăng xuất<a class="headerlink" href="#dang-xuat" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Mẫu yêu cầu</strong>:</dt>
+<dd><div class="first last highlight-sql"><div class="highlight"><pre><span class="n">logout</span><span class="p">:</span><span class="n">session_id</span><span class="o">=</span><span class="ss">&quot;foo&quot;</span><span class="o">&amp;</span><span class="n">api_key</span><span class="o">=</span><span class="ss">&quot;foobar&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Các tham số</strong>:</dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">session_id</span></tt>: được trả về khi đăng nhập thành công</li>
+<li><tt class="docutils literal"><span class="pre">api_key</span></tt>: server cung cấp</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>Xác thực</strong>: yêu cầu đã đăng nhập</p>
+</li>
+<li><p class="first"><strong>Phương thức</strong>: <tt class="docutils literal"><span class="pre">HTTP</span> <span class="pre">GET</span></tt></p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Trả lời</strong>:</dt>
+<dd><div class="first last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;logout</span> <span class="na">status_code=</span><span class="s">&quot;200&quot;</span> <span class="na">description=</span><span class="s">&quot;Đăng xuất thành công&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Các trường hợp lỗi</strong>:</dt>
+<dd><div class="first highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;401&quot;</span> <span class="na">description=</span><span class="s">&quot;session_id không hợp lệ&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="admonition-see-also last admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="#cac-thong-bao-loi-chung">Các thông báo lỗi chung</a></p>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="kich-hoat-tai-khoan">
+<h3>Kích hoạt tài khoản<a class="headerlink" href="#kich-hoat-tai-khoan" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="lay-ma-kich-hoat-moi-danh-cho-bo-phan-quan-tri">
+<h3>Lấy mã kích hoạt mới (dành cho bộ phận quản trị)<a class="headerlink" href="#lay-ma-kich-hoat-moi-danh-cho-bo-phan-quan-tri" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="nhom-tu-dien">
+<h2><a class="toc-backref" href="#noi-dung-tai-lieu">Nhóm từ điển</a><a class="headerlink" href="#nhom-tu-dien" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tra-cuu">
+<h3>Tra cứu<a class="headerlink" href="#tra-cuu" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<p>Hiện tại hệ thống hỗ trợ 3 loại từ điển là từ điển Anh-Việt, từ điển Việt-Anh và từ điển Anh-Anh</p>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Mẫu yêu cầu</strong>:</dt>
+<dd><div class="first last highlight-sql"><div class="highlight"><pre><span class="n">lookup</span><span class="p">:</span><span class="n">keyword</span><span class="o">=</span><span class="ss">&quot;foo&quot;</span><span class="o">&amp;</span><span class="n">session_id</span><span class="o">=</span><span class="ss">&quot;bar&quot;</span><span class="o">&amp;</span><span class="n">api_key</span><span class="o">=</span><span class="ss">&quot;foobar&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>Các tham số</strong>:</p>
+<blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">keyword</span></tt>: từ muốn tra</li>
+<li><tt class="docutils literal"><span class="pre">session_id</span></tt>: session_id nhận được sau khi đăng nhập thành công</li>
+<li><tt class="docutils literal"><span class="pre">api_key</span></tt>: được phía server cung cấp</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first"><strong>Xác thực</strong>: yêu cầu đã đăng nhập</p>
+</li>
+<li><p class="first"><strong>Phương thức</strong>: <tt class="docutils literal"><span class="pre">HTTP</span> <span class="pre">GET</span></tt></p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Trả lời</strong>:</dt>
+<dd><div class="first highlight-xml"><div class="highlight"><pre><span class="nt">&lt;lookup</span> <span class="na">status_code=</span><span class="s">&quot;200&quot;</span> <span class="na">description=</span><span class="s">&quot;baz&quot;</span> <span class="na">keyword=</span><span class="s">&quot;foo&quot;</span> <span class="na">mean=</span><span class="s">&quot;bar&quot;</span> <span class="na">spell=</span><span class="s">&quot;foobar&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li><tt class="docutils literal"><span class="pre">keyword</span></tt>: từ đuợc tra</li>
+<li><tt class="docutils literal"><span class="pre">mean</span></tt>: nghĩa của từ được tra</li>
+<li><tt class="docutils literal"><span class="pre">spell</span></tt>: phiên âm quốc tế của từ được tra</li>
+<li>Giá trị của thuộc tính keyword, mean, spell sẽ thay đổi tùy từng yêu cầu</li>
+</ul>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Các trường hợp lỗi</strong>:</dt>
+<dd><div class="first last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;404&quot;</span> <span class="na">description=</span><span class="s">&quot;Từ khóa bạn tìm không có trong từ điển&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div class="section" id="nhom-bai-giang">
+<h2><a class="toc-backref" href="#noi-dung-tai-lieu">Nhóm bài giảng</a><a class="headerlink" href="#nhom-bai-giang" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="danh-sach-cac-muc-trinh-do">
+<h3>Danh sách các mức trình độ<a class="headerlink" href="#danh-sach-cac-muc-trinh-do" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Mẫu yêu cầu</strong>:</dt>
+<dd><div class="first last highlight-sql"><div class="highlight"><pre><span class="n">levels</span><span class="p">:</span><span class="n">lang</span><span class="o">=</span><span class="ss">&quot;foo&quot;</span><span class="o">&amp;</span><span class="n">session_id</span><span class="o">=</span><span class="ss">&quot;bar&quot;</span><span class="o">&amp;</span><span class="n">api_key</span><span class="o">=</span><span class="ss">&quot;foobar&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>Các tham số</strong>:</p>
+<blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">lang</span></tt>: là <tt class="docutils literal"><span class="pre">en</span></tt> hoặc <tt class="docutils literal"><span class="pre">vi</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">session_id</span></tt>: session_id nhận được sau khi đăng nhập thành công</li>
+<li><tt class="docutils literal"><span class="pre">api_key</span></tt>: server cung cấp</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first"><strong>Xác thực</strong>: yêu cầu đã đăng nhập</p>
+</li>
+<li><p class="first"><strong>Phương thức</strong>: <tt class="docutils literal"><span class="pre">HTTP</span> <span class="pre">GET</span></tt></p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Trả lời</strong>:</dt>
+<dd><div class="first highlight-xml"><div class="highlight"><pre><span class="nt">&lt;level</span> <span class="na">name=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;level</span> <span class="na">name=</span><span class="s">&quot;bar&quot;</span><span class="nt">/&gt;</span>
+...
+</pre></div>
+</div>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>giá trị <tt class="docutils literal"><span class="pre">foo</span></tt> và <tt class="docutils literal"><span class="pre">bar</span></tt> sẽ thay đổi tùy thuộc vào nội dung biên tập</li>
+<li>số <tt class="docutils literal"><span class="pre">&lt;level</span> <span class="pre">name=&quot;foobar&quot;/&gt;</span></tt> cũng sẽ phụ thuộc vào quá trình phân loại của bộ phận nội dung</li>
+</ul>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Các trường hợp lỗi</strong>:</dt>
+<dd><div class="first highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;401&quot;</span> <span class="na">description=</span><span class="s">&quot;session_id không hợp lệ&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;404&quot;</span> <span class="na">description=</span><span class="s">&quot;Cấu hình hệ thống sai&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="danh-sach-cac-bai-hoc">
+<h3>Danh sách các bài học<a class="headerlink" href="#danh-sach-cac-bai-hoc" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Mẫu yêu cầu</strong>:</dt>
+<dd><div class="first last highlight-sql"><div class="highlight"><pre><span class="n">lessons</span><span class="p">:</span><span class="n">lang</span><span class="o">=</span><span class="ss">&quot;foo&quot;</span><span class="o">&amp;</span><span class="k">level</span><span class="o">=</span><span class="ss">&quot;baz&quot;</span><span class="o">&amp;</span><span class="n">session_id</span><span class="o">=</span><span class="ss">&quot;bar&quot;</span><span class="o">&amp;</span><span class="n">api_key</span><span class="o">=</span><span class="ss">&quot;foobar&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>Các tham số</strong>:</p>
+<blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">lang</span></tt>: là <tt class="docutils literal"><span class="pre">en</span></tt> hoặc <tt class="docutils literal"><span class="pre">vi</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">level</span></tt>: tên level người dùng chọn</li>
+<li><tt class="docutils literal"><span class="pre">session_id</span></tt>: session_id nhận được sau khi đăng nhập thành công</li>
+<li><tt class="docutils literal"><span class="pre">api_key</span></tt>: server cung cấp</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first"><strong>Xác thực</strong>: yêu cầu đã đăng nhập</p>
+</li>
+<li><p class="first"><strong>Phương thức</strong>: <tt class="docutils literal"><span class="pre">HTTP</span> <span class="pre">GET</span></tt></p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Trả lời</strong>:</dt>
+<dd><div class="first highlight-xml"><div class="highlight"><pre><span class="nt">&lt;lesson</span> <span class="na">name=</span><span class="s">&quot;foo&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;lesson</span> <span class="na">name=</span><span class="s">&quot;bar&quot;</span><span class="nt">/&gt;</span>
+...
+</pre></div>
+</div>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>giá trị <tt class="docutils literal"><span class="pre">foo</span></tt> và <tt class="docutils literal"><span class="pre">bar</span></tt> sẽ thay đổi tùy thuộc vào nội dung biên tập</li>
+<li>số <tt class="docutils literal"><span class="pre">&lt;lesson</span> <span class="pre">name=&quot;foobar&quot;/&gt;</span></tt> cũng sẽ phụ thuộc vào quá trình phân loại của bộ phận nội dung</li>
+</ul>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Các trường hợp lỗi</strong>:</dt>
+<dd><div class="first highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;401&quot;</span> <span class="na">description=</span><span class="s">&quot;session_id không hợp lệ&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;404&quot;</span> <span class="na">description=</span><span class="s">&quot;Cấu hình hệ thống sai&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</blockquote>
+</div>
+<div class="section" id="nghe-bai-giang">
+<h3>Nghe bài giảng<a class="headerlink" href="#nghe-bai-giang" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<ul>
+<li><dl class="first docutils">
+<dt><strong>Mẫu yêu cầu</strong>:</dt>
+<dd><div class="first last highlight-sql"><div class="highlight"><pre><span class="k">listen</span><span class="p">:</span><span class="n">lang</span><span class="o">=</span><span class="ss">&quot;foo&quot;</span><span class="o">&amp;</span><span class="k">level</span><span class="o">=</span><span class="ss">&quot;baz&quot;</span><span class="o">&amp;</span><span class="n">lesson</span><span class="o">=</span><span class="ss">&quot;fu&quot;</span><span class="o">&amp;</span><span class="n">session_id</span><span class="o">=</span><span class="ss">&quot;bar&quot;</span><span class="o">&amp;</span><span class="n">api_key</span><span class="o">=</span><span class="ss">&quot;foobar&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first"><strong>Các tham số</strong>:</p>
+<blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">lang</span></tt>: là <tt class="docutils literal"><span class="pre">en</span></tt> hoặc <tt class="docutils literal"><span class="pre">vi</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">level</span></tt>: tên level người dùng chọn</li>
+<li><tt class="docutils literal"><span class="pre">lesson</span></tt>: bài học người dùng ch</li>
+<li><tt class="docutils literal"><span class="pre">session_id</span></tt>: session_id nhận được sau khi đăng nhập thành công</li>
+<li><tt class="docutils literal"><span class="pre">api_key</span></tt>: server cung cấp</li>
+</ul>
+</blockquote>
+</li>
+<li><p class="first"><strong>Xác thực</strong>: yêu cầu đã đăng nhập</p>
+</li>
+<li><p class="first"><strong>Phương thức</strong>: <tt class="docutils literal"><span class="pre">HTTP</span> <span class="pre">GET</span></tt></p>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Trả lời</strong>:</dt>
+<dd><div class="first highlight-xml"><div class="highlight"><pre><span class="nt">&lt;audio</span> <span class="na">title=</span><span class="s">&quot;foo&quot;</span> <span class="na">description=</span><span class="s">&quot;bar&quot;</span> <span class="na">link=</span><span class="s">&quot;foobar&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;audio</span> <span class="na">title=</span><span class="s">&quot;fu&quot;</span> <span class="na">description=</span><span class="s">&quot;baz&quot;</span> <span class="na">link=</span><span class="s">&quot;fubaz&quot;</span><span class="nt">/&gt;</span>
+...
+</pre></div>
+</div>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>giá trị của các thuộc tính <tt class="docutils literal"><span class="pre">title</span></tt>, <tt class="docutils literal"><span class="pre">description</span></tt>, <tt class="docutils literal"><span class="pre">link</span></tt> sẽ thay đổi tùy thuộc vào nội dung biên tập</li>
+<li>số thẻ <tt class="docutils literal"><span class="pre">&lt;audio/&gt;</span></tt> cũng sẽ phụ thuộc vào quá trình phân loại của bộ phận nội dung</li>
+</ul>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Các trường hợp lỗi</strong>:</dt>
+<dd><div class="first highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;401&quot;</span> <span class="na">description=</span><span class="s">&quot;session_id không hợp lệ&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<div class="last highlight-xml"><div class="highlight"><pre><span class="nt">&lt;error</span> <span class="na">status_code=</span><span class="s">&quot;404&quot;</span> <span class="na">description=</span><span class="s">&quot;Cấu hình hệ thống sai&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="#">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">MEL&#8217;s API Document</a><ul>
+<li><a class="reference external" href="#what-s-new">What&#8217;s new?</a></li>
+<li><a class="reference external" href="#change-logs">Change logs</a></li>
+<li><a class="reference external" href="#tong-quan">Tổng quan</a></li>
+<li><a class="reference external" href="#status-codes">Status Codes</a></li>
+<li><a class="reference external" href="#api-key">API Key</a></li>
+<li><a class="reference external" href="#nhung-phan-chung">Những phần chung</a><ul>
+<li><a class="reference external" href="#dinh-dang-tra-ve">Định dạng trả về</a></li>
+<li><a class="reference external" href="#thong-bao-loi">Thông báo lỗi</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#nhom-xac-thuc">Nhóm xác thực</a><ul>
+<li><a class="reference external" href="#dang-ky">Đăng ký</a></li>
+<li><a class="reference external" href="#dang-nhap">Đăng nhập</a></li>
+<li><a class="reference external" href="#dang-xuat">Đăng xuất</a></li>
+<li><a class="reference external" href="#kich-hoat-tai-khoan">Kích hoạt tài khoản</a></li>
+<li><a class="reference external" href="#lay-ma-kich-hoat-moi-danh-cho-bo-phan-quan-tri">Lấy mã kích hoạt mới (dành cho bộ phận quản trị)</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#nhom-tu-dien">Nhóm từ điển</a><ul>
+<li><a class="reference external" href="#tra-cuu">Tra cứu</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#nhom-bai-giang">Nhóm bài giảng</a><ul>
+<li><a class="reference external" href="#danh-sach-cac-muc-trinh-do">Danh sách các mức trình độ</a></li>
+<li><a class="reference external" href="#danh-sach-cac-bai-hoc">Danh sách các bài học</a></li>
+<li><a class="reference external" href="#nghe-bai-giang">Nghe bài giảng</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/index.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="#">EnglishMobileLearning v0.9.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, AloneRoad.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.5.
+    </div>
+  </body>
+</html>
