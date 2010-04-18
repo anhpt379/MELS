@@ -23,18 +23,14 @@ redis_backup_filename = 'redis_dump'
 redis_backup_dir = '/home/Workspace/MELS/database/raw_data'
 
 #----- data directory -----
-files_dir   = '/home/Workspace/MELS/files'
-data_folder = '/home/Workspace/MELS/files/data'
-audio_url_prefix = '/files/data'
+files_dir   = '/home/Workspace/MELS/database'
+data_folder = '/home/Workspace/MELS/database/contents'
+audio_url_prefix = '/database'
 #----- end data directory config -----
 
 #----- user settings -----
 trial_time = 15 # days
 #----- end user settings -----
-
-#----- setup path ------
-install_path = '/home/MELS'
-#----- end setup config -----
 
 #----- serve ports -----
 api_ports = [9000, 9001, 9002, 9003, 9004, 9005]

@@ -7,33 +7,6 @@ from os.path import dirname, join
 client = cassa.connect(cassandra_hosts)
 d = cassa.ColumnFamily(client, cassandra_keyspace, 'Dictionary', super=True)
 
-## open dictionary
-##en_vi_dict = '/home/Workspace/MobileEnglishLearning/v0.9.1/database/dic/anhviet109K.dict'
-#dict_file = raw_input('.dict path: ') 
-#dict_type = raw_input('type: ')
-#
-#data = open(dict_file).read()
-#
-#items = data.split('\n@')
-#total = float(len(items))
-#n = 0
-#for item in items:
-#    try:
-#        keyword = item.split(' /')[0].strip()
-#        mean = '\n'.join(x for x in item.split('\n')[1:]).strip()
-#        spell = '/%s/' % item.split('/')[1]
-#        d.insert(dict_type, {keyword: {'phien_am_quoc_te': spell, 
-#                                       'nghia': mean}})
-#        n += 1
-#        print "%5.2f" % (n / total * 100) + '%'
-#    except IndexError:
-#        print 'Error'
-#        n += 1
-#        print "%5.2f" % (n / total * 100) + '%'
-#
-#print 'finish'
-    
-
 def import_en_vi_dict():
     dict_file = join(dirname(dirname(__file__)), '_files/anhviet109K.dict') 
     dict_type = 'en_vi'

@@ -54,9 +54,9 @@ def _update_nginx_config():
         new_backends = new_backends + _s % port
     
     conf = conf.replace(s, new_backends)
-    
-    # backup old config
-    move('bin/nginx/conf/nginx.conf', 'bin/nginx/conf/nginx.conf.bak')
+#    
+#    # backup old config
+#    move('bin/nginx/conf/nginx.conf', 'bin/nginx/conf/nginx.conf.bak')
     
     # write new config
     f = open('bin/nginx/conf/nginx.conf', 'w')
@@ -69,9 +69,9 @@ def _update_cassandra_config():
     s = get_text('log4j.appender.R.File=', '\n', conf)[0]
     conf = conf.replace(s, cassandra_log_file)
     
-    #backup old config
-    move('bin/cassandra/conf/log4j.properties', 'bin/cassandra/conf/log4j.properties.bak')
-    
+#    #backup old config
+#    move('bin/cassandra/conf/log4j.properties', 'bin/cassandra/conf/log4j.properties.bak')
+#    
     # write new config
     f = open('bin/cassandra/conf/log4j.properties', 'w')
     f.write(conf)
@@ -97,9 +97,9 @@ def _update_redis_config():
     s = get_text('dir ', '\n', conf)[0]
     conf = conf.replace(s, redis_backup_dir)
     
-    #backup old config
-    move('bin/redis/redis.conf', 'bin/redis/redis.conf.bak')
-    
+#    #backup old config
+#    move('bin/redis/redis.conf', 'bin/redis/redis.conf.bak')
+#    
     # write new config
     f = open('bin/redis/redis.conf', 'w')
     f.write(conf)
