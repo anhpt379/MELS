@@ -189,9 +189,9 @@
    ~ disk.  Keep the data disks and the CommitLog disks separate for best
    ~ performance
   -->
-  <CommitLogDirectory>/home/Workspace/MELS/database/raw_data/commitlog</CommitLogDirectory>
+  <CommitLogDirectory>/home/Workspace/MELS/data/raw_data/commitlog</CommitLogDirectory>
   <DataFileDirectories>
-      <DataFileDirectory>/home/Workspace/MELS/database/raw_data/data</DataFileDirectory>
+      <DataFileDirectory>/home/Workspace/MELS/data/raw_data/data</DataFileDirectory>
   </DataFileDirectories>
 
 

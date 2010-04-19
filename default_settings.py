@@ -14,18 +14,18 @@ cassandra_hosts = ['localhost:9160', ]
 
 cassandra_super_column_family = ['Users', 'Dictionary'] 
 
-cassandra_log_file               = '/home/Workspace/MELS/database/log/cassandra.log'
-cassandra_commit_log_directory   = '/home/Workspace/MELS/database/raw_data/commitlog'
-cassandra_data_file_directory    = '/home/Workspace/MELS/database/raw_data/data'
+cassandra_log_file               = '/home/Workspace/MELS/data/log/cassandra.log'
+cassandra_commit_log_directory   = '/home/Workspace/MELS/data/raw_data/commitlog'
+cassandra_data_file_directory    = '/home/Workspace/MELS/data/raw_data/data'
 
 #----- redis setting -----
 redis_backup_filename = 'redis_dump'
-redis_backup_dir = '/home/Workspace/MELS/database/raw_data'
+redis_backup_dir = '/home/Workspace/MELS/data/raw_data'
 
 #----- data directory -----
-files_dir   = '/home/Workspace/MELS/database'
-data_folder = '/home/Workspace/MELS/database/contents'
-audio_url_prefix = '/database'
+files_dir   = '/home/Workspace/MELS/data/files'
+data_folder = '/home/Workspace/MELS/data/files/contents'
+audio_url_prefix = '/real_people'
 #----- end data directory config -----
 
 #----- user settings -----

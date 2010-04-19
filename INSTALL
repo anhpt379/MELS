@@ -7,7 +7,7 @@
     Thay đổi tên server và các thông báo lỗi đặc biệt ở 2 file ``src/http/ngx_http_header_filter_module.c`` 
     và ``src/http/ngx_http_special_response.c``
     
-    ./configure --without-http_autoindex_module --without-http_ssi_module --without-http_userid_module --without-http_auth_basic_module --without-http_geo_module --without-http_fastcgi_module --without-http_empty_gif_module
+    ./configure --without-http_autoindex_module --without-http_ssi_module --without-http_userid_module --without-http_auth_basic_module --without-http_fastcgi_module --without-http_empty_gif_module
     make
     make install
     
