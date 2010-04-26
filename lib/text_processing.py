@@ -1,6 +1,7 @@
 #! coding: utf-8
 import string
 import re
+from xml.dom.minidom import parseString
 
 
 def xml_format(s):
@@ -70,3 +71,16 @@ def intersect(a, b):
 def union(a, b):
     """ return the union of two lists """
     return list(set(a) | set(b))
+
+def pretty_xml(xml_string):
+    return '\n'.join([line for line in parseString(xml_string).toprettyxml(indent=' '*4, encoding='utf-8').split('\n') if line.strip()])
+
+if __name__ == '__main__':
+    xml_string = '''
+    <api version="0.9.1" last_update="18-04-2010"> 
+    <login status_code="202" 
+           session_id="5b6e35fdee3fc01e6e43502b099eaeed" 
+           description="Đăng nhập thành công"/> 
+</api> 
+    '''
+    print pretty_xml(xml_string)

@@ -214,8 +214,12 @@ Giá trị của các tham số được đặt trong cặp ký tự <tt class="
 <ul>
 <li><dl class="first docutils">
 <dt><strong>Mẫu yêu cầu</strong>:</dt>
-<dd><div class="first last highlight-sql"><div class="highlight"><pre><span class="n">register</span><span class="p">:</span><span class="n">username</span><span class="o">=</span><span class="ss">&quot;foo&quot;</span><span class="o">&amp;</span><span class="n">password</span><span class="o">=</span><span class="ss">&quot;bar&quot;</span><span class="o">&amp;</span><span class="n">phone_number</span><span class="o">=</span><span class="ss">&quot;foobar&quot;</span><span class="o">&amp;</span><span class="n">api_key</span><span class="o">=</span><span class="ss">&quot;fubar&quot;</span>
+<dd><div class="first highlight-sql"><div class="highlight"><pre><span class="n">register</span><span class="p">:</span><span class="n">username</span><span class="o">=</span><span class="ss">&quot;foo&quot;</span><span class="o">&amp;</span><span class="n">password</span><span class="o">=</span><span class="ss">&quot;bar&quot;</span><span class="o">&amp;</span><span class="n">phone_number</span><span class="o">=</span><span class="ss">&quot;foobar&quot;</span><span class="o">&amp;</span><span class="n">api_key</span><span class="o">=</span><span class="ss">&quot;fubar&quot;</span>
 </pre></div>
+</div>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">foobar != foo + bar</p>
 </div>
 </dd>
 </dl>
@@ -408,7 +412,8 @@ Giá trị của các tham số được đặt trong cặp ký tự <tt class="
 </li>
 <li><dl class="first docutils">
 <dt><strong>Trả lời</strong>:</dt>
-<dd><div class="first highlight-xml"><div class="highlight"><pre><span class="nt">&lt;lookup</span> <span class="na">status_code=</span><span class="s">&quot;200&quot;</span> <span class="na">description=</span><span class="s">&quot;baz&quot;</span> <span class="na">keyword=</span><span class="s">&quot;foo&quot;</span> <span class="na">mean=</span><span class="s">&quot;bar&quot;</span> <span class="na">spell=</span><span class="s">&quot;foobar&quot;</span><span class="nt">/&gt;</span>
+<dd><div class="first highlight-xml"><div class="highlight"><pre><span class="nt">&lt;lookup</span> <span class="na">type=</span><span class="s">&quot;en_vi&quot;</span> <span class="na">status_code=</span><span class="s">&quot;200&quot;</span> <span class="na">keyword=</span><span class="s">&quot;foo&quot;</span> <span class="na">mean=</span><span class="s">&quot;bar&quot;</span> <span class="na">spell=</span><span class="s">&quot;foobar&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;lookup</span> <span class="na">type=</span><span class="s">&quot;en_vi&quot;</span> <span class="na">status_code=</span><span class="s">&quot;200&quot;</span> <span class="na">keyword=</span><span class="s">&quot;foo&quot;</span> <span class="na">mean=</span><span class="s">&quot;bar&quot;</span><span class="nt">/&gt;</span>
 </pre></div>
 </div>
 <div class="last admonition note">

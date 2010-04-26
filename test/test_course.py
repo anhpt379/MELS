@@ -38,19 +38,22 @@ class CourseTest(unittest.TestCase):
         return get_status_code(output)
     
     def _lessons(self, lang='en'):
-        request = 'levels:lang="%s"&session_id="%s"&api_key="%s"' \
-                % (quote(lang), self.a._login('Tuan Anh', 'pta'), self.api_key)
-        uri = self.root + request
-        output = urlopen(uri).read()
-        if get_status_code(output) is not None:
-            first_level = get_property(output, 'name')
-            
-            request = 'lessons:lang="%s"&level="%s"&session_id="%s"&api_key="%s"' \
-                    % (quote(lang), quote(first_level), self.a._login('Tuan Anh', 'pta'), self.api_key)
+        try:
+            request = 'levels:lang="%s"&session_id="%s"&api_key="%s"' \
+                    % (quote(lang), self.a._login('Tuan Anh', 'pta'), self.api_key)
             uri = self.root + request
             output = urlopen(uri).read()
-            return get_status_code(output)
-        else:
+            if get_status_code(output) is not None:
+                first_level = get_property(output, 'name')
+                
+                request = 'lessons:lang="%s"&level="%s"&session_id="%s"&api_key="%s"' \
+                        % (quote(lang), quote(first_level), self.a._login('Tuan Anh', 'pta'), self.api_key)
+                uri = self.root + request
+                output = urlopen(uri).read()
+                return get_status_code(output)
+            else:
+                return None
+        except:
             return -1
             
     
@@ -66,7 +69,7 @@ class CourseTest(unittest.TestCase):
     def test_lessons(self):
         self.assertEqual(self._lessons('en'), None)
         self.assertEqual(self._lessons('vi'), None)
-        self.assertEqual(self._lessons('enz'), 406)
+        self.assertEqual(self._lessons('enz'), -1)
         
 if __name__ == '__main__':
     unittest.main()

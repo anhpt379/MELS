@@ -6,6 +6,7 @@ sys.path.append(os.path.dirname(__file__))
 from datetime import datetime
 from lib.cache import KeyValueDatabase
 from lib.tornado import wsgi, httpserver, ioloop   
+from lib.text_processing import pretty_xml
 from settings import api_db
 from api.error import Error
 from api.dictionary import Dictionary
@@ -36,10 +37,8 @@ last_update.append(_last_update)
 last_update = time.strftime("%d-%m-%Y", time.localtime(max(last_update)))
 
 #----- Description Header ------
-__description__ = '<?xml version="1.0" encoding="utf-8"?>\n'
-__description__ = __description__ \
-                + '<api version="0.9.1" last_update="%s">\n' % (last_update)
-__description__ = __description__ + '\t%s\n</api>\n'
+__description__ = '<api version="0.9.1" last_update="%s">' % (last_update)
+__description__ = __description__ + '%s</api>'
 
 #----- Global Parameters -----
 API_DB = KeyValueDatabase(api_db)
@@ -188,6 +187,7 @@ class Handler:
                 xml = """<error status_code="400"
                                 description="Yêu cầu không hợp lệ"/>"""
                 xml = __description__ % xml
+                xml = pretty_xml(xml)
                 response_headers = [('Content-type', 'text/xml'),
                                     ('Content-Length', str(len(xml)))]
                 start_response(status, response_headers)
@@ -198,6 +198,7 @@ class Handler:
                 except KeyError:
                     xml = self.error.authen_error("Thiếu api_key")
                     xml = __description__ % xml
+                    xml = pretty_xml(xml)
                     response_headers = [('Content-type', 'text/xml'),
                                         ('Content-Length', str(len(xml)))]
                     start_response(status, response_headers)
@@ -211,6 +212,7 @@ class Handler:
                     xml = """<error status_code="401"
                                     description="api_key không hợp lệ"/>"""
                     xml = __description__ % xml
+                    xml = pretty_xml(xml)
                     response_headers = [('Content-type', 'text/xml'),
                                         ('Content-Length', str(len(xml)))]
                     start_response(status, response_headers)
@@ -234,6 +236,7 @@ class Handler:
                     <error status_code="403" description="%s"/>
                     """ % message
                     xml = __description__ % xml
+                    xml = pretty_xml(xml)
                     response_headers = [('Content-type', 'text/xml'),
                                         ('Content-Length', str(len(xml)))]
                     start_response(status, response_headers)
@@ -248,6 +251,7 @@ class Handler:
                     <error status_code="403" description="%s"/>
                     """ % message
                     xml = __description__ % xml
+                    xml = pretty_xml(xml)
                     response_headers = [('Content-type', 'text/xml'),
                                         ('Content-Length', str(len(xml)))]
                     start_response(status, response_headers)
@@ -257,6 +261,7 @@ class Handler:
                     environ['request'] = self._parse_request(path) 
                     xml = self.m.execute(environ)
                     xml = __description__ % xml
+                    xml = pretty_xml(xml)
                     response_headers = [('Content-type', 'text/xml'),
                                         ('Content-Length', str(len(xml)))]
                     start_response(status, response_headers)

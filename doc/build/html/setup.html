@@ -106,17 +106,71 @@ cat id_rsa.pub &gt;&gt; authorized_keys</pre>
 <blockquote>
 <ul>
 <li><p class="first">Chuẩn bị:</p>
-<div class="highlight-python"><pre>rpm -ivh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-3.noarch.rpm
-yum groupinstall -y 'Development Tools'</pre>
+<div class="highlight-python"><pre>rpm -Uvh http://yum.chrislea.com/centos/5/i386/chl-release-5-3.noarch.rpm
+rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-3.noarch.rpm
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CHL
+
+yum groupinstall -y 'Development Tools'
+yum install -y openssl-devel* zlib*</pre>
 </div>
 </li>
-<li><p class="first">Tải mã nguồn mới nhất từ trang chủ về, giải nén và cài đặt:</p>
-<div class="highlight-python"><pre>wget http://python.org/ftp/python/2.6.5/Python-2.6.5.tgz
-tar zxvf Python-2.6.5.tgz
-cd Python-2.6.5
-./configure
-make
-make install</pre>
+<li><p class="first">Cài đặt Python 2.6:</p>
+<div class="highlight-python"><pre>* Tải mã nguồn mới nhất về::
+
+    cd /usr/local/src
+    wget
+    tar zxvf
+
+* Build và cài đặt::
+
+    ./configure --prefix=/opt/python2.6 --with-threads --enable-shared
+    make
+    make install
+
+* Cấu hình::
+
+    vim /root/.bash_profile
+
+    #Chèn vào phần cuối của file
+        alias python='/opt/python2.6/bin/python'
+        alias python2.6='/opt/python2.6/bin/python'
+        PATH=$PATH:/opt/python2.6/bin
+
+    cat &gt;&gt; /etc/ld.so.conf.d/opt-python2.6.conf
+    # gõ vào
+        /opt/python2.6/lib
+    # và nhấn 'enter'
+    # sau đó nhấn 'ctrl+d'
+    ldconfig
+
+    chmod -R a+w /opt/python2.6/bin/
+
+    cd /opt/python2.6/lib/python2.6/config
+    ln -s ../../libpython2.6.s
+
+* Lưu và thoát:: ``ESC`` + ``:wq!``
+#yum install -y python26 python26-devel</pre>
+</div>
+</li>
+<li><p class="first">alias python=/usr/bin/python26</p>
+</li>
+<li><p class="first">Cài đặt các thư viện bổ sung:</p>
+<div class="highlight-python"><pre>* paramiko::
+
+    easy_install paramiko
+
+* hashlib (for python 2.4)
+* simplejson (for python2.4)
+* email
+* functools</pre>
+</div>
+</li>
+<li><p class="first">Cài đặt java:</p>
+<div class="highlight-python"><pre>yum install -y java</pre>
+</div>
+</li>
+<li><p class="first">Cài đặt Git:</p>
+<div class="highlight-python"><pre>yum install -y git</pre>
 </div>
 </li>
 </ul>

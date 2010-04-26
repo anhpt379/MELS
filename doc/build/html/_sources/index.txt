@@ -165,6 +165,8 @@ Nhóm xác thực
             
             register:username="foo"&password="bar"&phone_number="foobar"&api_key="fubar"
             
+        .. note:: foobar != foo + bar
+        
     * **Các tham số**:
         - ``username``: tên đăng nhập
         - ``password``: mật khẩu đăng nhập (phía client phải mã hóa md5 trước khi gửi lên
@@ -301,7 +303,8 @@ Tra cứu
     * **Trả lời**:
         .. code-block:: xml
             
-            <lookup status_code="200" description="baz" keyword="foo" mean="bar" spell="foobar"/>
+            <lookup type="en_vi" status_code="200" keyword="foo" mean="bar" spell="foobar"/>
+            <lookup type="en_vi" status_code="200" keyword="foo" mean="bar"/>
         
         .. note::
             
