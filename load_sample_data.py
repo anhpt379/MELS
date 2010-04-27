@@ -1,5 +1,8 @@
 #! /usr/bin/python
 #! coding: utf-8
+import sys, os
+sys.path.append(os.path.dirname(__file__))
+
 import pycassa as cassa
 from settings import cassandra_keyspace, cassandra_hosts
 from os.path import dirname, join

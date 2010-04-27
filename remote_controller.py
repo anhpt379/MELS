@@ -4,6 +4,6 @@
 # git clone git://github.com/AloneRoad/MELS.git
 from lib import ssh
 
-private_key = "id_rsa"
+private_key = "/home/Workspace/MELS/id_rsa"
 remote = ssh.Connection('203.128.246.60', 'root', private_key)
-print remote.execute("ps xa | grep python")
+print remote.execute("free")

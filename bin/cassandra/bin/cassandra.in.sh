@@ -39,8 +39,8 @@ done
 # Arguments to pass to the JVM
 JVM_OPTS=" \
         -ea \
-        -Xms128M \
-        -Xmx1G \
+        -Xms256M \
+        -Xmx1GB \
         -XX:TargetSurvivorRatio=90 \
         -XX:+AggressiveOpts \
         -XX:+UseParNewGC \

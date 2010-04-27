@@ -30,3 +30,129 @@ make install
 
 ________________________________________________________________________________
 Setup pcre-devel, Thrift, pycassa
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=====================================
+Step by step install on OpenSuSE 11.2
+=====================================
+
+zypper in -y git
+zypper in -y python-setuptools
+easy_install thrift
+zypper in -y pcre-devel
+zypper in java-1_6_0-openjdk-devel
+
+mkdir /home/Workspace
+mkdir /home/Workspace/MELS
+
+cd /home/Workspace/
+git clone git://github.com/AloneRoad/MELS.git
+
+cd MELS/
+mkdir data
+mkdir data/raw_data/
+mkdir data/log
+mkdir data/files
+
+mkdir package-dependencies
+
+cd package-dependencies
+wget http://sysoev.ru/nginx/nginx-0.7.65.tar.gz
+tar zxvf nginx-0.7.65.tar.gz
+cd nginx-0.7.65
+cp -f ../../_files/ngx_http_header_filter_module.c src/http/ngx_http_header_filter_module.c
+cp -f ../../_files/ngx_http_special_response.c src/http/ngx_http_special_response.c 
+
+./configure --without-http_autoindex_module --without-http_ssi_module --without-http_userid_module --without-http_auth_basic_module --without-http_fastcgi_module --without-http_empty_gif_module --prefix=/home/Workspace/MELS/bin/nginx/
+make && make install
+
+
+git clone git://github.com/AloneRoad/pycassa.git
+cd pycassa
+python setup.py install
+python setup.py --cassandra install
+
+
+cd ../../
+
+
+
+Build Source code
+=================
+
+cd bin/redis
+make
+
+#cd /home/Workspace/MELS/package-dependencies
+#wget http://mirror-fpt-telecom.fpt.net/apache/cassandra/0.6.1/apache-cassandra-0.6.1-bin.tar.gz
+#wget http://www.apache.org/dist/incubator/thrift/0.2.0-incubating/thrift-0.2.0-incubating.tar.gz
+tar zxvf thrift-0.2.0-incubating.tar.gz
+cd thrift-0.2.0
+./configure
+make
+make install
+
+
+
+
+
+cd ../cassandra/bin
+chmod +x *
+
+./cassandra
+
+Nếu gặp lỗi Can't start up: not enough memory thì sửa file cassandra.in.sh
+giảm giá trị của tham số -Xmx1G xuống cho phù hợp 
+
+
+
+python server_controller.py start
+python load_sample_data.py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
